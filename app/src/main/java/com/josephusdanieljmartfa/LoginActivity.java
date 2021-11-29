@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.josephusdanieljmartfa.model.Account;
@@ -53,17 +54,23 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jObject = new JSONObject(response);
                             if (jObject != null) {
-                                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 loggedAccount = gson.fromJson(jObject.toString(), Account.class);
                                 startActivity(intent);
                             }
-                        } catch (JSONException e){
-                            Toast.makeText(LoginActivity.this, "Login Tidak Berhasil", Toast.LENGTH_LONG);
+                        } catch (JSONException e) {
+                            Toast.makeText(LoginActivity.this, "Login Tidak Berhasil", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(loginEmail.getText().toString(), loginPassword.getText().toString(), listener, null);
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LoginActivity.this, "Login Tidak Berhasil!", Toast.LENGTH_SHORT);
+                    }
+                };
+                LoginRequest loginRequest = new LoginRequest(loginEmail.getText().toString(), loginPassword.getText().toString(), listener, errorListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

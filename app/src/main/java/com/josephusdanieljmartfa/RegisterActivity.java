@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.josephusdanieljmartfa.request.RegisterRequest;
 
@@ -36,16 +37,22 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jObject = new JSONObject(response);
                             if (jObject != null) {
-                                Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_LONG);
+                                Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(RegisterActivity.this, "Login Tidak Berhasil", Toast.LENGTH_LONG);
+                            Toast.makeText(RegisterActivity.this, "Register Tidak Berhasil", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
-                RegisterRequest request = new RegisterRequest(name.getText().toString(), email.getText().toString(), password.getText().toString(), listener, null);
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(RegisterActivity.this, "Register Error!", Toast.LENGTH_SHORT);
+                    }
+                };
+                RegisterRequest request = new RegisterRequest(name.getText().toString(), email.getText().toString(), password.getText().toString(), listener, errorListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(request);
             }
