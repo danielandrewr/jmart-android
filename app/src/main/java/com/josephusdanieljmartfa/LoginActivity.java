@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         } catch (JSONException e) {
+                            e.printStackTrace();
                             Toast.makeText(LoginActivity.this, "Login Tidak Berhasil", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -67,10 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                 Response.ErrorListener errorListener = new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, "Login Tidak Berhasil!", Toast.LENGTH_SHORT);
+                        Toast.makeText(LoginActivity.this, "Login Tidak Berhasil!", Toast.LENGTH_SHORT).show();
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(loginEmail.getText().toString(), loginPassword.getText().toString(), listener, errorListener);
+                LoginRequest loginRequest = new LoginRequest(
+                        loginEmail.getText().toString(),
+                        loginPassword.getText().toString(),
+                        listener,
+                        errorListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

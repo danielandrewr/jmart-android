@@ -11,17 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JosephusdanielJmartFa"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".AboutMe"
+            android:exported="false"
+            android:label="About Me"
+            />
+        <activity
+            android:name=".CreateProductActivity"
+            android:exported="false"
+            android:label="Jmart-Android"
+            />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Jmart-Android"
+            />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Jmart-Android"
+            />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Jmart-Android">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

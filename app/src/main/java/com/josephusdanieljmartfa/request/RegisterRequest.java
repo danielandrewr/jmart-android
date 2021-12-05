@@ -19,4 +19,8 @@ public class RegisterRequest extends StringRequest {
         params.put("email", email);
         params.put("password", password);
     }
+
+    public Map<String, String> getParams() {
+        return params;
+    }
 }

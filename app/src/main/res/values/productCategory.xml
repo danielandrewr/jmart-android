@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="productCategory">
+        <item>BOOK</item>
+        <item>KITCHEN</item>
+        <item>ELECTRONIC</item>
+        <item>FASHION</item>
+        <item>GADGET</item>
+        <item>MOTHERCARE</item>
+        <item>HEALTHCARE</item>
+        <item>FURNITURE</item>
+        <item>JEWELRY</item>
+        <item>TOYS</item>
+        <item>FNB</item>
+        <item>STATIONERY</item>
+        <item>SPORTS</item>
+        <item>AUTOMOTIVE</item>
+        <item>PETCARE</item>
+        <item>ART_CRAFT</item>
+        <item>CARPENTRY</item>
+        <item>MISCELLANEOUS</item>
+        <item>PROPERTY</item>
+        <item>TRAVEL</item>
+        <item>WEDDING</item>
+    </string-array>
+</resources>

@@ -14,7 +14,7 @@ public class LoginRequest extends StringRequest {
 
     public LoginRequest(String email, String password, Response.Listener<String> listener,
                         Response.ErrorListener errorListener) {
-        super(Request.Method.POST, URL, listener, errorListener);
+        super(Method.POST, URL, listener, errorListener);
         params.put("email", email);
         params.put("password", password);
     }

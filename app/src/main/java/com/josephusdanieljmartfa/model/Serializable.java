@@ -3,9 +3,9 @@ package com.josephusdanieljmartfa.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Serializable implements Comparable<Serializable> {
+public class Serializable {
 
-    public final int id = -1;
+    public int id;
     private static Map<Class<?>, Integer> mapCounter = new HashMap<Class<?>, Integer>();
 
     protected Serializable() {
@@ -15,7 +15,7 @@ public class Serializable implements Comparable<Serializable> {
         } else {
             mapCounter.put(getClass(), counter + 1);
         }
-//        this.id = mapCounter.get(getClass());
+        this.id = mapCounter.get(getClass());
     }
 
     public static <T extends Serializable> Integer setClosingId(Class<T> clasz, int id) {
@@ -48,10 +48,5 @@ public class Serializable implements Comparable<Serializable> {
             }
         }
         return false;
-    }
-
-    @Override
-    public int compareTo(Serializable o) {
-        return Integer.compare(this.id, o.id);
     }
 }

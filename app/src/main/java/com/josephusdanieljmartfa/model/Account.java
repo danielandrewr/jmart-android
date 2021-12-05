@@ -12,6 +12,9 @@ public class Account extends Serializable {
     public String password;
     public double balance;
     public Store store;
+    public String getId() {
+        return String.valueOf(id);
+    }
 
     public Account(String name, String email, String password, double balance) {
         this.name = name;
