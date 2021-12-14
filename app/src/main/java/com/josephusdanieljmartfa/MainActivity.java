@@ -2,10 +2,13 @@ package com.josephusdanieljmartfa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,10 +35,12 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.josephusdanieljmartfa.model.Product;
+import com.josephusdanieljmartfa.model.ProductCategory;
 import com.josephusdanieljmartfa.request.RequestFactory;
 
 import org.json.JSONArray;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         tabLayoutMediator.attach();
-
-
     }
 
     @Override
@@ -104,46 +107,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
-//    public void populate(int page) {
-//        EditText name = getView().findViewById(R.id.filterName);
-//        EditText minPrice = getView().findViewById(R.id.filterLowest);
-//        EditText maxPrice = getView().findViewById(R.id.filterHighest);
-//        CheckBox checkNew = getView().findViewById(R.id.checkNew);
-//        Spinner category = getView().findViewById(R.id.spinner);
-//
-//        boolean used = !checkNew.isChecked();
-//        Response.Listener<String> listener = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    JSONArray jArray = new JSONArray(response);
-//                    Type type = new TypeToken<ArrayList<Product>>(){}.getType();
-//                    products = gson.fromJson(String.valueOf(jArray), type);
-//                    for (Product prod : products) {
-//                        productNames.add(prod.name.toString());
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//        try {
-//            Response.ErrorListener errorListener = new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    Toast.makeText(MainActivity.this, "Error Terjadi!", Toast.LENGTH_LONG).show();
-//                }
-//            };
-//            StringRequest request = RequestFactory.getProduct(page, 5, name.getText().toString(),
-//                    minPrice.getText().toString(), maxPrice.getText().toString(), String.valueOf(used),
-//                    category.getSelectedItem().toString(),
-//                    listener, errorListener);
-//            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-//            queue.add(request);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Toast.makeText(MainActivity.this, "Error Terjadi!", Toast.LENGTH_LONG).show();
-//        }
-//    }
 }

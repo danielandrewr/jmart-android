@@ -3,8 +3,10 @@ package com.josephusdanieljmartfa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,10 +26,11 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        EditText name = findViewById(R.id.nameInput);
-        EditText email = findViewById(R.id.emailInput2);
-        EditText password = findViewById(R.id.passwordInput2);
-        Button registerButton = findViewById(R.id.register);
+        initStatusBar();
+        EditText name = findViewById(R.id.registerName);
+        EditText email = findViewById(R.id.registerEmail);
+        EditText password = findViewById(R.id.registerPassword);
+        Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,5 +60,17 @@ public class RegisterActivity extends AppCompatActivity {
                 queue.add(request);
             }
         });
+    }
+
+    public void initStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.register_bk_color));
+        }
+    }
+
+    public void onRegisterClick(View view) {
+        startActivity(new Intent(this, LoginActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);
     }
 }

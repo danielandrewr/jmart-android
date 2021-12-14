@@ -16,29 +16,34 @@
             android:name=".AboutMe"
             android:exported="false"
             android:label="About Me"
+            android:windowSoftInputMode="adjustPan"
             />
         <activity
             android:name=".CreateProductActivity"
             android:exported="false"
             android:label="Jmart-Android"
+            android:windowSoftInputMode="adjustPan"
             />
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="Jmart-Android"
+            android:windowSoftInputMode="adjustPan"
             />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:label="Jmart-Android"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
             />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="Jmart-Android">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -3,14 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/button_background_blue.xml" value="0.14537037037037037" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.2" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_about_me.xml" value="0.4" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_create_product.xml" value="0.264" />
-        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_login.xml" value="0.22540983606557377" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/fragment_filter.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/fragment_products.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/tablayout.xml" value="0.1" />

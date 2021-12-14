@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/productFragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/pageNumber"
             android:layout_width="91dp"
             android:layout_height="38dp"
             android:ems="10"
@@ -23,7 +24,7 @@
             app:layout_constraintVertical_bias="0.037" />
 
         <Button
-            android:id="@+id/prev"
+            android:id="@+id/prev2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#E1D7D7"
@@ -38,7 +39,7 @@
             app:layout_constraintVertical_bias="0.023" />
 
         <Button
-            android:id="@+id/next"
+            android:id="@+id/next2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#E1D7D7"
@@ -53,7 +54,7 @@
             app:layout_constraintVertical_bias="0.023" />
 
         <Button
-            android:id="@+id/go"
+            android:id="@+id/go2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#E1D7D7"
@@ -74,6 +75,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/pageNumber" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

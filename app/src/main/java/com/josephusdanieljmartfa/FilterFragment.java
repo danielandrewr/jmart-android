@@ -5,17 +5,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +23,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.josephusdanieljmartfa.model.Account;
 import com.josephusdanieljmartfa.model.Product;
 import com.josephusdanieljmartfa.request.RequestFactory;
 
@@ -33,20 +33,24 @@ import org.json.JSONArray;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link FilterFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragment Filter
+ * Required to show additional information that can be filtered
  */
 public class FilterFragment extends Fragment {
+
+    private ColorStateList gray = ColorStateList.valueOf(Color.parseColor("#B3B3B3"));
+    public List<Product> products = new ArrayList<>();
+    public static List<String> productNames = new ArrayList<>();
+
+    private Gson gson = new Gson();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private ColorStateList gray = ColorStateList.valueOf(Color.parseColor("#B3B3B3"));
-
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -86,7 +90,79 @@ public class FilterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_filter, container, false);
+        View v = inflater.inflate(R.layout.fragment_filter, container, false);
+
+        EditText name = v.findViewById(R.id.filterName);
+        EditText minPrice = v.findViewById(R.id.filterLowest);
+        EditText maxPrice = v.findViewById(R.id.filterHighest);
+        CheckBox checkNew = v.findViewById(R.id.checkNew);
+        CheckBox checkUsed = v.findViewById(R.id.checkUsed);
+        Spinner category = v.findViewById(R.id.spinnerCategory);
+        Button applyFilter = v.findViewById(R.id.applyFilter);
+        Button cancelFilter = v.findViewById(R.id.cancelFilter);
+
+        applyFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((!name.getText().toString().isEmpty()) && (!minPrice.getText().toString().isEmpty()) &&
+                        (!maxPrice.getText().toString().isEmpty()) && (checkNew.isChecked() || checkUsed.isChecked()) &&
+                        (!category.getSelectedItem().toString().isEmpty())) {
+
+                    productNames.clear();
+                    products.clear();
+
+                    boolean used = !checkNew.isChecked();
+                    Response.Listener<String> listener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONArray jArray = new JSONArray(response);
+                                Type type = new TypeToken<ArrayList<Product>>(){}.getType();
+                                products = gson.fromJson(String.valueOf(jArray), type);
+                                for (Product prod : products) {
+                                    productNames.add(prod.name.toString());
+                                }
+                                Toast.makeText(getActivity(), "Filter berhasil!", Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(getActivity(), "Filter Gagal!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    };
+                    Response.ErrorListener errorListener = new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getActivity(), "Error Terjadi!", Toast.LENGTH_LONG).show();
+                        }
+                    };
+                    StringRequest request = RequestFactory.getProduct(1, 5,
+                            LoginActivity.getLoggedAccount().id,
+                            name.getText().toString(),
+                            minPrice.getText().toString(),
+                            maxPrice.getText().toString(),
+                            category.getSelectedItem().toString(),
+                            String.valueOf(used),
+                            listener, errorListener);
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    queue.add(request);
+                } else {
+                    Toast.makeText(getActivity(), "Input Filter Tidak Boleh Kosong!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        cancelFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name.setText("");
+                minPrice.setText("");
+                maxPrice.setText("");
+                checkNew.setChecked(false);
+                checkUsed.setChecked(false);
+            }
+        });
+
+        return v;
     }
 
     @Override
@@ -97,7 +173,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    filterLabelNama.setTextColor(getResources().getColor(R.color.purple_200));
+                    filterLabelNama.setTextColor(getResources().getColor(R.color.themeColor));
                     filterTextName.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFBB86FC")));
                     filterLabelNama.setHint("Nama Product");
                 } else {
@@ -114,7 +190,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    filterLabelLowest.setTextColor(getResources().getColor(R.color.purple_200));
+                    filterLabelLowest.setTextColor(getResources().getColor(R.color.themeColor));
                     filterTextLowest.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFBB86FC")));
                     filterLabelLowest.setHint("Ex: 1000");
                 } else {
@@ -131,7 +207,7 @@ public class FilterFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    filterLabelHighest.setTextColor(getResources().getColor(R.color.purple_200));
+                    filterLabelHighest.setTextColor(getResources().getColor(R.color.themeColor));
                     filterTextHighest.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFBB86FC")));
                     filterLabelHighest.setHint("Ex: 1000");
                 } else {
@@ -141,5 +217,9 @@ public class FilterFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public static List<String> getProductNames() {
+        return productNames;
     }
 }
