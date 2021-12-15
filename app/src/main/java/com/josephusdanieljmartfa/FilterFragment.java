@@ -42,7 +42,7 @@ import java.util.List;
 public class FilterFragment extends Fragment {
 
     private ColorStateList gray = ColorStateList.valueOf(Color.parseColor("#B3B3B3"));
-    public List<Product> products = new ArrayList<>();
+    public static List<Product> products = new ArrayList<>();
     public static List<String> productNames = new ArrayList<>();
 
     private Gson gson = new Gson();
@@ -222,4 +222,6 @@ public class FilterFragment extends Fragment {
     public static List<String> getProductNames() {
         return productNames;
     }
+
+    public static List<Product> getProduct() { return products; }
 }

@@ -1,7 +1,10 @@
 package com.josephusdanieljmartfa;
 
 import static com.josephusdanieljmartfa.FilterFragment.getProductNames;
+import static com.josephusdanieljmartfa.FilterFragment.productNames;
+import static com.josephusdanieljmartfa.FilterFragment.products;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +12,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.josephusdanieljmartfa.model.Product;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +29,8 @@ import android.widget.ListView;
  * create an instance of this fragment.
  */
 public class ProductsFragment extends Fragment {
+
+    private static Map<String, String> activeProduct = new HashMap<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,8 +78,36 @@ public class ProductsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_products, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, getProductNames());
-        ListView listView = view.findViewById(R.id.productsView);
+        ListView listView = (ListView) view.findViewById(R.id.productsView);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                activeProduct.clear();
+                Product selectedProduct = products.get(position);
+                try {
+                    if (selectedProduct != null) {
+                        activeProduct.put("productId", String.valueOf(selectedProduct.id));
+                        activeProduct.put("name", selectedProduct.name);
+                        activeProduct.put("weight", String.valueOf(selectedProduct.weight));
+                        activeProduct.put("price", String.valueOf(selectedProduct.price));
+                        activeProduct.put("discount", String.valueOf(selectedProduct.discount));
+                        activeProduct.put("category", String.valueOf(selectedProduct.category));
+                        activeProduct.put("condition", String.valueOf(selectedProduct.conditionUsed));
+
+                        startActivity(new Intent(getActivity(), ProductDetail.class));
+                    } else {
+                        Toast.makeText(getActivity(), "Terjadi Kesalahan: Selected Product Null!", Toast.LENGTH_LONG).show();
+                    }
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         return view;
     }
+
+    public static Map<String, String> getActiveProduct() { return activeProduct; }
 }

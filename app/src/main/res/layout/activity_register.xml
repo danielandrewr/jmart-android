@@ -30,7 +30,8 @@
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Register\nTo Start\nYour Journey!"
+                    android:textSize="35sp"
+                    android:text="Join Us\nTo Start\nYour\nJourney!"
                     android:textColor="@color/whiteTextColor" />
 
                 <ImageView
@@ -64,6 +65,7 @@
                             android:id="@+id/registerName"
                             style="@style/modifiedEditText"
                             android:hint="Full Name"
+                            android:textSize="15sp"
                             android:inputType="textPersonName"
                             android:maxLines="1" />
 
@@ -78,6 +80,7 @@
                             android:id="@+id/registerEmail"
                             style="@style/modifiedEditText"
                             android:hint="@string/login_email_hint"
+                            android:textSize="15sp"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
 
@@ -92,6 +95,7 @@
                             android:id="@+id/registerPassword"
                             style="@style/modifiedEditText"
                             android:hint="@string/login_password_hint"
+                            android:textSize="15sp"
                             android:inputType="textPassword"
                             android:maxLines="1" />
 

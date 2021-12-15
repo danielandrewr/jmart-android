@@ -31,6 +31,7 @@
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
+                    android:textSize="35sp"
                     android:text="Everything\nStarts \nHere !" />
 
                 <ImageView
@@ -50,6 +51,7 @@
                     android:id="@+id/emailInput"
                     style="@style/modifiedEditText"
                     android:hint="@string/login_email_hint"
+                    android:textSize="15sp"
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,6 +65,7 @@
                     android:id="@+id/passwordInput"
                     style="@style/modifiedEditText"
                     android:hint="@string/login_password_hint"
+                    android:textSize="15sp"
                     android:inputType="textPassword"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>

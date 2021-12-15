@@ -90,15 +90,15 @@ public class CreateProductActivity extends AppCompatActivity {
     }
 
     private byte checkShipmentPlan(Spinner productShipmentPlan) {
-        if (productShipmentPlan.getSelectedItem() == "INSTANT") {
+        if (productShipmentPlan.getSelectedItem().toString().equals("INSTANT")) {
             return (byte)00000001;
-        } else if (productShipmentPlan.getSelectedItem() == "SAME DAY") {
+        } else if (productShipmentPlan.getSelectedItem().toString().equals("SAME DAY")) {
             return (byte)00000010;
-        } else if (productShipmentPlan.getSelectedItem() == "NEXT DAY") {
+        } else if (productShipmentPlan.getSelectedItem().toString().equals("NEXT DAY")) {
             return (byte)00000100;
-        } else if (productShipmentPlan.getSelectedItem() == "REGULER") {
+        } else if (productShipmentPlan.getSelectedItem().toString().equals("REGULER")) {
             return (byte)00001000;
-        } else if (productShipmentPlan.getSelectedItem() == "KARGO") {
+        } else if (productShipmentPlan.getSelectedItem().toString().equals("KARGO")) {
             return (byte)00010000;
         }
         return 0;
