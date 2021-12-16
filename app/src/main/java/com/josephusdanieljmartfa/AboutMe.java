@@ -34,6 +34,9 @@ public class AboutMe extends AppCompatActivity {
 
         Account loggedAccount = LoginActivity.getLoggedAccount();
 
+        TextView accountDetails = findViewById(R.id.accountDetails);
+        accountDetails.setText("Hi, " + loggedAccount.name + "!");
+
         TextView nameValue = findViewById(R.id.nameValue);
         nameValue.setText(loggedAccount.name);
         TextView emailValue = findViewById(R.id.emailValue);
@@ -121,5 +124,20 @@ public class AboutMe extends AppCompatActivity {
                 Toast.makeText(AboutMe.this, "Top Up Amount tidak boleh kosong!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void onAboutMeClick(View view) {
+        startActivity(new Intent(AboutMe.this, InvoiceHistory.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
+    }
+
+    public void onHomeClick(View view) {
+        startActivity(new Intent(AboutMe.this, MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+    }
+
+    public void onCheckOrderClick(View view) {
+        startActivity(new Intent(AboutMe.this, CheckOrderActivity.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
 }

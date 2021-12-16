@@ -21,4 +21,11 @@
         android:title="Profile"
         app:showAsAction="collapseActionView|always"
         />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Log Out"
+        app:showAsAction="collapseActionView|always"
+        />
 </menu>

@@ -15,7 +15,7 @@ public class RequestFactory {
     private static final String URL_FORMAT_ID = "http://10.0.2.2:8090/%s/%d";
     private static final String URL_FORMAT_PAGE = "http://10.0.2.2:8090/%s/page";
     private static final String URL_FORMAT_PRODUCT = "http://10.0.2.2:8090/product/getFiltered?page=%s&pageSize=%s&accountId=%d&search=%s&minPrice=%s&maxPrice=%s&category=%s&conditionUsed=%s";
-    private static final String URL_FORMAT_PAYMENT = "http://10.0.2.2:8090/payment/%s/getPayments";
+    private static final String URL_FORMAT_PAYMENT = "http://10.0.2.2:8090/payment/getPayments?accountId=%d";
 
     public static StringRequest getById(
             String parentURI,

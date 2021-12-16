@@ -87,6 +87,15 @@ public class CreateProductActivity extends AppCompatActivity {
                 queue.add(createRequest);
             }
         });
+
+        Button cancelButton = findViewById(R.id.productCancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+            }
+        });
     }
 
     private byte checkShipmentPlan(Spinner productShipmentPlan) {

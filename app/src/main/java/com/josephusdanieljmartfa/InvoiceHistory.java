@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -30,7 +32,7 @@ import java.util.List;
 
 public class InvoiceHistory extends AppCompatActivity {
 
-    private List<Payment> payments = new ArrayList<>();
+    public static List<Payment> payments = new ArrayList<>();
     private Gson gson = new Gson();
     private PaymentItemAdapter adapter;
 
@@ -38,6 +40,34 @@ public class InvoiceHistory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice_history);
+        getSupportActionBar().hide();
+
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jArray = new JSONArray(response);
+                    Type type = new TypeToken<ArrayList<Payment>>(){}.getType();
+                    payments = gson.fromJson(String.valueOf(jArray), type);
+                    System.out.print(payments);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    finish();
+                    overridePendingTransition(0, 0);
+                    Toast.makeText(InvoiceHistory.this, "Gagal Memuat History!", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(InvoiceHistory.this, "Gagal Membuat Request!", Toast.LENGTH_LONG).show();
+            }
+        };
+        StringRequest request = RequestFactory.getPayments(LoginActivity.getLoggedAccount().id, listener, errorListener);
+        RequestQueue queue = Volley.newRequestQueue(InvoiceHistory.this);
+        queue.add(request);
 
         RecyclerView recyclerView = findViewById(R.id.historyView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -60,37 +90,20 @@ public class InvoiceHistory extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                             adapter.setLoaded();
                         }
-                    }, 5000);
+                    }, 2000);
                 } else {
                     Toast.makeText(InvoiceHistory.this, "History Loaded", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
 
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jArray = new JSONArray(response);
-                    Type type = new TypeToken<ArrayList<Payment>>(){}.getType();
-                    payments = gson.fromJson(String.valueOf(jArray), type);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    finish();
-                    overridePendingTransition(0, 0);
-                    Toast.makeText(InvoiceHistory.this, "Gagal Memuat History!", Toast.LENGTH_LONG).show();
-                }
-            }
-        };
+    public void onInvoiceHistoryClick(View view) {
+        startActivity(new Intent(InvoiceHistory.this, AboutMe.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+    }
 
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(InvoiceHistory.this, "Gagal Membuat Request!", Toast.LENGTH_LONG).show();
-            }
-        };
-        StringRequest request = RequestFactory.getPayments(LoginActivity.getLoggedAccount().id, listener, errorListener);
-        RequestQueue queue = Volley.newRequestQueue(InvoiceHistory.this);
-        queue.add(request);
+    public static List<Payment> getPayment() {
+        return payments;
     }
 }

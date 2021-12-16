@@ -10,6 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onAboutMeClick"
+            android:src="@drawable/ic_add_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.829" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="360dp"
@@ -28,20 +40,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:elevation="10dp"
+                    android:onClick="onHomeClick"
+                    android:src="@drawable/ic_baseline_home_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.947"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.029" />
+
                 <TextView
                     android:id="@+id/accountDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Account Details"
                     android:textColor="@color/themeColor"
-                    android:textStyle="bold"
                     android:textSize="24sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.076"
+                    app:layout_constraintHorizontal_bias="0.068"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.025" />
+                    app:layout_constraintVertical_bias="0.04" />
 
                 <TextView
                     android:id="@+id/nameDetails"
@@ -136,13 +161,13 @@
                     android:id="@+id/topUpBalance"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:ems="10"
                     android:hint="Top Up Amount"
                     android:inputType="numberSigned"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.222"
+                    app:layout_constraintHorizontal_bias="0.207"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/balanceDetails"
                     app:layout_constraintVertical_bias="0.0" />
@@ -185,7 +210,7 @@
                     android:layout_height="290dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="3dp"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     app:cardUseCompatPadding="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -203,7 +228,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Store Details"
-                            android:textColor="@color/purple_500"
+                            android:textColor="@color/themeColor"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -300,6 +325,22 @@
                             app:layout_constraintStart_toEndOf="@+id/textView5"
                             app:layout_constraintTop_toBottomOf="@+id/storeAddress"
                             app:layout_constraintVertical_bias="0.118" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/checkOrder"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/themeColor"
+                            android:text="CHECK ORDER"
+                            android:onClick="onCheckOrderClick"
+                            android:textSize="16sp"
+                            app:cornerRadius="27dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/storePhoneNumber"
+                            app:layout_constraintVertical_bias="0.538" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -309,7 +350,7 @@
                     android:layout_height="290dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="3dp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     app:cardUseCompatPadding="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

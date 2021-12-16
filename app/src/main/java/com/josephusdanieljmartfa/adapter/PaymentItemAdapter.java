@@ -60,8 +60,8 @@ public class PaymentItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (load != null) {
                         load.onLoad();
                     }
+                    isLoading = true;
                 }
-                isLoading = true;
             }
         });
     }
@@ -88,7 +88,7 @@ public class PaymentItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (holder instanceof ItemViewHolder) {
             Payment payment = payments.get(position);
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
-            viewHolder.productName.setText(payment.productId);
+            viewHolder.productName.setText(String.valueOf(payment.productId));
             viewHolder.invoiceStatus.setText(payment.history.get(payment.history.size()-1).status.toString());
         } else if (holder instanceof LoadingViewHolder) {
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;

@@ -6,7 +6,9 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -48,10 +50,23 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String SHARED_PREFS = "shared_prefs";
+
+    public static final String EMAIL_KEY = "email_key";
+
+    public static final String PASSWORD_KEY = "password_key";
+
+    private SharedPreferences sharedPreferences;
+
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedPreferences.getString(EMAIL_KEY, null);
 
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new FragmentAdapter(this));
@@ -101,6 +116,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.profile:
                 Intent profileIntent = new Intent(this, AboutMe.class);
                 this.startActivity(profileIntent);
+                break;
+            case R.id.logout:
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent logoutIntent = new Intent(this, LoginActivity.class);
+                this.startActivity(logoutIntent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
