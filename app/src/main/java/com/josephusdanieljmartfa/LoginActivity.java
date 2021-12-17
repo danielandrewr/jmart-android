@@ -25,6 +25,9 @@ import com.josephusdanieljmartfa.request.LoginRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity untuk Login
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private Gson gson = new Gson();
@@ -34,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         return loggedAccount;
     }
 
+    // Shared Preferences diperlukan agar data email dan password dapat terbagi ke Activity tertentu
     private static final String SHARED_PREFS = "shared_prefs";
 
     public static final String EMAIL_KEY = "email_key";
@@ -46,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // Coba lakukan Login Session
         if (EMAIL_SESSION != null && PASSWORD_SESSION != null) {
             Response.Listener<String> listener = new Response.Listener<String>() {
                 @Override

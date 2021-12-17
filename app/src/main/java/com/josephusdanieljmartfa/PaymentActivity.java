@@ -30,6 +30,9 @@ import java.io.StringBufferInputStream;
 import java.lang.reflect.Array;
 import java.util.Locale;
 
+/**
+ * Activity untuk Melakukan Payment atas Product tertentu
+ */
 public class PaymentActivity extends AppCompatActivity {
 
     @Override

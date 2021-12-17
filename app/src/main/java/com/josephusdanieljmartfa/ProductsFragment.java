@@ -95,8 +95,8 @@ public class ProductsFragment extends Fragment {
                         activeProduct.put("discount", String.valueOf(selectedProduct.discount));
                         activeProduct.put("category", String.valueOf(selectedProduct.category));
                         activeProduct.put("condition", String.valueOf(selectedProduct.conditionUsed));
-
-                        startActivity(new Intent(getActivity(), ProductDetail.class));
+                        Intent intent = new Intent(getActivity(), ProductDetail.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getActivity(), "Terjadi Kesalahan: Selected Product Null!", Toast.LENGTH_LONG).show();
                     }

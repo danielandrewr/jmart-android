@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/drawable/ic_logout_button.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_about_me.xml" value="0.264" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_check_order.xml" value="0.25" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_create_product.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_invoice_history.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_login.xml" value="0.1" />
@@ -17,9 +18,10 @@
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_payment.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_product_detail.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/activity_store_invoice.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/fragment_filter.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/fragment_products.xml" value="0.264" />
-        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/item_layout.xml" value="0.6" />
+        <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/item_layout.xml" value="0.4" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/loader_progressbar.xml" value="0.264" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/layout/tablayout.xml" value="0.1" />
         <entry key="..\:/Users/Daniel/Documents/Daniel/Semester 3/OOP/Praktikum/jmart-android/app/src/main/res/menu/menu.xml" value="0.4" />

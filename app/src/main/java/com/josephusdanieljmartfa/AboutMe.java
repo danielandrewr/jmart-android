@@ -24,6 +24,10 @@ import com.josephusdanieljmartfa.request.TopUpRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity yang menampilkan informasi Account dan Store
+ * Navigasi ke Invoice History dan Order History dapat dilakukan di sini
+ */
 public class AboutMe extends AppCompatActivity {
 
     @Override
@@ -50,9 +54,11 @@ public class AboutMe extends AppCompatActivity {
 
         Button registerStoreButton = findViewById(R.id.registerStoreButton);
         if ((loggedAccount.store == null)) {
-            registerStoreButton.setVisibility(View.VISIBLE);
+            registerCard.setVisibility(View.VISIBLE);
+            detailsCard.setVisibility(View.GONE);
         } else {
             detailsCard.setVisibility(View.VISIBLE);
+            registerCard.setVisibility(View.GONE);
             TextView storeName = findViewById(R.id.storeName);
             storeName.setText(LoginActivity.getLoggedAccount().store.name);
             TextView storeAddress = findViewById(R.id.storeAddress);

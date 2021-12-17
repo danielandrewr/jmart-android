@@ -7,11 +7,27 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public class CreateProductRequest extends StringRequest {
 
     private static final String URL = "http://10.0.2.2:8090/product/create";
     private final Map<String, String> params = new HashMap<>();
 
+    /**
+     * Constructor CreateProductRequest
+     * @param accountId
+     * @param name
+     * @param weight
+     * @param conditionUsed
+     * @param price
+     * @param discount
+     * @param category
+     * @param shipmentPlans
+     * @param listener
+     * @param errorListener
+     */
     public CreateProductRequest(String accountId, String name, String weight, String conditionUsed,
                                 String price, String discount, String category, String shipmentPlans,
                                 Response.Listener<String> listener, Response.ErrorListener errorListener) {

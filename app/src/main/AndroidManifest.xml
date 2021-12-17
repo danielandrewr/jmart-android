@@ -13,6 +13,9 @@
         android:theme="@style/Theme.JosephusdanielJmartFa"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".StoreInvoiceActivity"
+            android:exported="false" />
+        <activity
             android:name=".CheckOrderActivity"
             android:exported="false" />
         <activity

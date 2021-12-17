@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.josephusdanieljmartfa.Interface.LoadInterface;
+import com.josephusdanieljmartfa.Interface.PaymentItemInterface;
 import com.josephusdanieljmartfa.adapter.PaymentItemAdapter;
 import com.josephusdanieljmartfa.model.Payment;
 import com.josephusdanieljmartfa.model.Product;
@@ -25,11 +27,16 @@ import com.josephusdanieljmartfa.request.PaymentRequest;
 import com.josephusdanieljmartfa.request.RequestFactory;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity yang menampilkan sejarah Invoice dari setiap Payment yang dilakukan
+ */
 public class InvoiceHistory extends AppCompatActivity {
 
     public static List<Payment> payments = new ArrayList<>();
@@ -46,6 +53,7 @@ public class InvoiceHistory extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    payments.clear();
                     JSONArray jArray = new JSONArray(response);
                     Type type = new TypeToken<ArrayList<Payment>>(){}.getType();
                     payments = gson.fromJson(String.valueOf(jArray), type);
@@ -71,7 +79,12 @@ public class InvoiceHistory extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.historyView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PaymentItemAdapter(recyclerView, this, payments);
+        adapter = new PaymentItemAdapter(recyclerView, this, payments, new PaymentItemInterface() {
+            @Override
+            public void imageViewOnClick(int position) {
+
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         adapter.setLoad(new LoadInterface() {
@@ -106,4 +119,37 @@ public class InvoiceHistory extends AppCompatActivity {
     public static List<Payment> getPayment() {
         return payments;
     }
+
+//    private List<Product> getProductName(List<Payment> payments) {
+//        if (payments != null) {
+//            for (Payment payment : payments) {
+//                Response.Listener<String> listener = new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        try {
+//                            JSONArray jArray = new JSONArray(response);
+//                            if (jArray != null) {
+//                                Type type = new TypeToken<ArrayList<Product>>(){}.getType();
+//                                productTemp = gson.fromJson(String.valueOf(jArray), type);
+//                                productName.add(productTemp);
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                };
+//                Response.ErrorListener errorListener = new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                    }
+//                };
+//
+//                StringRequest productById = RequestFactory.getProductById(payment.productId, listener, errorListener);
+//                RequestQueue queue = Volley.newRequestQueue(InvoiceHistory.this);
+//                queue.add(productById);
+//            }
+//        }
+//
+//        return productName;
+//    }
 }

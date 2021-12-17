@@ -20,6 +20,9 @@ import com.josephusdanieljmartfa.request.RegisterRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity untuk melakukan registrasi Account baru
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -62,6 +65,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inisialisasi Status bar awal
+     */
     public void initStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -69,6 +75,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Pindah Activity ke Login
+     * @param view
+     */
     public void onRegisterClick(View view) {
         startActivity(new Intent(this, LoginActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay);

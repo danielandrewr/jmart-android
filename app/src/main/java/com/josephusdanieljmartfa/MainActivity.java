@@ -48,6 +48,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Activity Awal untuk Tampilan Menu, Products, dan Filter
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String SHARED_PREFS = "shared_prefs";

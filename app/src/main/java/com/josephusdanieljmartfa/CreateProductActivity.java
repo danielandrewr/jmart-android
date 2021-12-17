@@ -23,6 +23,9 @@ import com.josephusdanieljmartfa.request.CreateProductRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity untuk membuat Product Baru
+ */
 public class CreateProductActivity extends AppCompatActivity {
 
     private boolean conditionUsed;
