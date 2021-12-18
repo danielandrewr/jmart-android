@@ -72,6 +72,14 @@ public class ProductsFragment extends Fragment {
         }
     }
 
+    /**
+     * Creates View for Products Fragment
+     * Selected Item data is derived from a temporary hashmap
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -109,5 +117,9 @@ public class ProductsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Returns active product
+     * @return
+     */
     public static Map<String, String> getActiveProduct() { return activeProduct; }
 }

@@ -53,6 +53,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
 
+    // Login Session Requeired Values
     private static final String SHARED_PREFS = "shared_prefs";
 
     public static final String EMAIL_KEY = "email_key";
@@ -63,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     private String email;
 
+    /**
+     * Shows the main activity that contains filtered products, menus, and navigation
+     * Login session is saved and will load this page whenever the app closes and the user hasn't logged out
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayoutMediator.attach();
     }
 
+    /**
+     * Inflates menu activity in action bar
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -106,11 +117,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Menu Click Event
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.search:
-                // go back here
+                // unused
                 break;
             case R.id.add:
                 Intent createProductIntent = new Intent(this, CreateProductActivity.class);

@@ -74,6 +74,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         productShipmentPlan.setAdapter(adapter);
 
+        /**
+         * Price To Pay value changes based on the value of ProductCount * ProductPrice
+         */
         TextWatcher priceWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -102,6 +105,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         productCount.addTextChangedListener(priceWatcher);
 
+        /**
+         * Process input to a POST request to Backend
+         */
         MaterialButton payButton = findViewById(R.id.buyProduct);
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +153,10 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Cancel Button On Click Event
+         * Goes back to MainActivity
+         */
         MaterialButton cancelButton = findViewById(R.id.cancelProduct);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +167,11 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Function to convert shipmentPlan value into byte
+     * @param productShipmentPlan
+     * @return
+     */
     private byte convertStringToByte(Spinner productShipmentPlan) {
         if (productShipmentPlan.getSelectedItem().toString().equals("INSTANT")) {
             return (byte)1;

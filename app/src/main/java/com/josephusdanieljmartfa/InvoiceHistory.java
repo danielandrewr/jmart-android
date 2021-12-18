@@ -43,6 +43,10 @@ public class InvoiceHistory extends AppCompatActivity {
     private Gson gson = new Gson();
     private PaymentItemAdapter adapter;
 
+    /**
+     * Load Invoice History from List of Payments (@payments)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +91,9 @@ public class InvoiceHistory extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
 
+        /**
+         * Used Runnable Handler to wait before loading data to decrease memory usage
+         */
         adapter.setLoad(new LoadInterface() {
             @Override
             public void onLoad() {
@@ -111,11 +118,19 @@ public class InvoiceHistory extends AppCompatActivity {
         });
     }
 
+    /**
+     * Escape to AboutMe
+     * @param view
+     */
     public void onInvoiceHistoryClick(View view) {
         startActivity(new Intent(InvoiceHistory.this, AboutMe.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
     }
 
+    /**
+     * Returns list of payments
+     * @return
+     */
     public static List<Payment> getPayment() {
         return payments;
     }
